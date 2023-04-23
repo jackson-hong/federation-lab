@@ -1,0 +1,63 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Doctor {
+  clinicVisibility: Boolean!
+
+  """삭제일"""
+  deletedAt: DateTime!
+  gender: DoctorGenderEnum!
+  hospitalId: ID!
+  image: String
+
+  """의료진 상세 소개"""
+  introductionDetail: String
+
+  """의료진 한줄 소개"""
+  introductionSummary: String
+  name: String!
+  phone: String
+  position: String
+
+  """학력 및 경력 및 수상이력"""
+  profile: String
+
+  """어워드 뱃지 표시 여부"""
+  showAwardBadge: Boolean
+  sort: Int!
+  sourceType: String
+  tvImageUrl: String
+  tvVisibility: Boolean!
+
+  """기본, 치과, 한의학 구분"""
+  type: MedicalTypeEnum!
+
+  """비대면 공지사항"""
+  untactNotice: String
+  untactOnTreatment: Boolean!
+  untactVisibility: Boolean!
+  visibility: Boolean!
+}
+
+enum DoctorGenderEnum {
+  female
+  male
+  unknown
+}
+
+enum MedicalTypeEnum {
+  dentalMedicine
+  koreanMedicine
+  medicine
+}
+
+type Query {
+  doctor: Doctor!
+  doctors: [Doctor!]!
+}

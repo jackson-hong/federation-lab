@@ -1,0 +1,104 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+enum PaymentMethodTypeEnum {
+  bankTransfer
+  kakaopay
+  nicepay
+}
+
+enum PaymentStatusEnum {
+  paymentCompleted
+  paymentFailed
+  refundCompleted
+  refundFailed
+  requested
+}
+
+enum PrescriptionStateEnum {
+  none
+  required
+}
+
+enum ProductTypeEnum {
+  addOn
+  mobile
+  tv
+}
+
+type Query {
+  treatment: Treatment!
+  treatments: [Treatment!]!
+}
+
+type Treatment {
+  callbackRequest: Boolean!
+  cardName: String
+  clientMethodId: String
+
+  """생성일"""
+  createdAt: DateTime!
+  departmentId: ID!
+  doctorId: ID
+
+  """진료비"""
+  fee: Float
+
+  """의사지정 진료 여부"""
+  isDirect: Boolean
+
+  """진료비 납부 여부"""
+  isPaid: Boolean
+
+  """후불결제 여부"""
+  isPostPayment: Boolean
+  lastCardNumber: String
+  latitude: Float
+  longitude: Float
+  matchingEndedAt: DateTime
+  matchingStartedAt: DateTime!
+  opentokSessionId: String
+  patientId: ID!
+
+  """결제 취소용 ID"""
+  paymentId: ID
+
+  """결제 수단 종류"""
+  paymentMethodType: PaymentMethodTypeEnum
+
+  """결제(수납) 상태"""
+  paymentStatus: PaymentStatusEnum
+  phone: String
+
+  """처방전이 발급되는 진료인지 여부"""
+  prescriptionState: PrescriptionStateEnum
+  productType: ProductTypeEnum!
+  reservedAt: DateTime
+  status: TreatmentStatusEnum!
+  symptomDescription: String
+  symptomImageS3Keys: [String!]
+  symptomImageUrls: [String!]
+  treatmentEndedAt: DateTime
+  treatmentNote: String
+  treatmentStartedAt: DateTime
+  treatmentWaitingTime: DateTime
+  userId: ID!
+}
+
+enum TreatmentStatusEnum {
+  cancel
+  completion
+  endcall
+  matchingfail
+  ontreatment
+  orderprescription
+  request
+  treatmenterror
+  waiting
+}

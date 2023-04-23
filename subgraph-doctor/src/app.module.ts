@@ -1,10 +1,14 @@
-import { Module } from '@nestjs/common';
+import {MiddlewareConsumer, Module, NestModule} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import {graphQLEndpoint, graphqlModule} from "./graphql.module";
 
 @Module({
-  imports: [],
+  imports: [// gql endpoints
+    graphqlModule,
+    graphQLEndpoint,],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export default class AppModule {
+}
